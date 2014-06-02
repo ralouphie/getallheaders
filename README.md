@@ -19,7 +19,7 @@ Add to `composer.json`:
 ```json
 {
     "require": {
-        "ralouphie/getallheaders": "~0.1.6"
+        "ralouphie/getallheaders": "~0.1.7"
     }
 }
 ```
