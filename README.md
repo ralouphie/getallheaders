@@ -1,0 +1,4 @@
+getallheaders
+=============
+
+PHP getallheaders polyfill
