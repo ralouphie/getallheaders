@@ -1,0 +1,17 @@
+language: php
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+  - hhvm
+
+before_script:
+  - composer install
+
+script:
+  - mkdir -p build/logs
+  - php vendor/bin/phpunit -c phpunit.xml
+
+after_script:
+  - php vendor/bin/coveralls -v
