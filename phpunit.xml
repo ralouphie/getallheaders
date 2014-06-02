@@ -6,7 +6,7 @@
 	strict="true">
 
 	<testsuite>
-		<directory>./tests/src</directory>
+		<directory>./tests</directory>
 	</testsuite>
 
 	<filter>
