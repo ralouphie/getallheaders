@@ -4,11 +4,11 @@ class HttpBuildUrlTest extends \PHPUnit_Framework_TestCase
 {
 	public function testNormalCase()
 	{
-		$expected = [
+		$expected = array(
 			'Key-One'                 => 'foo',
 			'Key-Two'                 => 'bar',
 			'Another-Key-For-Testing' => 'baz'
-		];
+		);
 
 		$_SERVER['HTTP_KEY_ONE']                 = 'foo';
 		$_SERVER['HTTP_KEY_TWO']                 = 'bar';
@@ -21,9 +21,9 @@ class HttpBuildUrlTest extends \PHPUnit_Framework_TestCase
 
 	public function testContentType()
 	{
-		$expected = [
+		$expected = array(
 			'Content-Type' => 'two'
-		];
+		);
 
 		$_SERVER['HTTP_CONTENT_TYPE'] = 'one';
 		$_SERVER['CONTENT_TYPE']      = 'two';
@@ -35,9 +35,9 @@ class HttpBuildUrlTest extends \PHPUnit_Framework_TestCase
 
 	public function testContentLength()
 	{
-		$expected = [
+		$expected = array(
 			'Content-Length' => '222'
-		];
+		);
 
 		$_SERVER['HTTP_CONTENT_LENGTH'] = '111';
 		$_SERVER['CONTENT_LENGTH']      = '222';
