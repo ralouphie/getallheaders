@@ -1,4 +1,4 @@
 getallheaders
 =============
 
-PHP getallheaders polyfill
+PHP `getallheaders` polyfill
