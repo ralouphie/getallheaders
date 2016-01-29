@@ -14,12 +14,6 @@ This is a simple polyfill for [`getallheaders()`](http://www.php.net/manual/en/f
 
 ## Install
 
-Add to `composer.json`:
-
-```json
-{
-    "require": {
-        "ralouphie/getallheaders": "~0.1.7"
-    }
-}
+```
+composer require ralouphie/getallheaders
 ```
