@@ -11,11 +11,11 @@ if (!function_exists('getallheaders')) {
     {
         $headers = array();
 
-        $copy_server = [
+        $copy_server = array(
             'CONTENT_TYPE'   => 'Content-Type',
             'CONTENT_LENGTH' => 'Content-Length',
             'CONTENT_MD5'    => 'Content-MD5',
-        ];
+        );
 
         foreach ($_SERVER as $key => $value) {
             if (substr($key, 0, 5) === 'HTTP_') {

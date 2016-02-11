@@ -1,7 +1,7 @@
 getallheaders
 =============
 
-PHP `getallheaders()` polyfill.
+PHP `getallheaders()` polyfill. Works on PHP versions newer than 5.3.
 
 [![Build Status](https://travis-ci.org/ralouphie/getallheaders.svg?branch=master)](https://travis-ci.org/ralouphie/getallheaders)
 [![Coverage Status](https://coveralls.io/repos/ralouphie/getallheaders/badge.png?branch=master)](https://coveralls.io/r/ralouphie/getallheaders?branch=master)
