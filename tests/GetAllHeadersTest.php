@@ -63,11 +63,20 @@ class GetAllHeadersTest extends \PHPUnit_Framework_TestCase
             array(
                 'Content-MD5',
                 array(
-                    'Content-MD5' => 'aef123'
+                    'Content-Md5' => 'aef123'
                 ),
                 array(
                     'CONTENT_MD5'      => 'aef123',
                     'HTTP_CONTENT_MD5' => 'fea321'
+                )
+            ),
+            array(
+                'Content-MD5 (HTTP_CONTENT_MD5 only)',
+                array(
+                    'Content-Md5' => 'f123'
+                ),
+                array(
+                    'HTTP_CONTENT_MD5' => 'f123'
                 )
             ),
             array(
