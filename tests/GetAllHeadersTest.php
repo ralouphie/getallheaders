@@ -52,6 +52,15 @@ class GetAllHeadersTest extends \PHPUnit_Framework_TestCase
                 )
             ),
             array(
+                'Content-Length (HTTP_CONTENT_LENGTH only)',
+                array(
+                    'Content-Length' => '111'
+                ),
+                array(
+                    'HTTP_CONTENT_LENGTH' => '111'
+                )
+            ),
+            array(
                 'Content-MD5',
                 array(
                     'Content-MD5' => 'aef123'

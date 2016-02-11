@@ -20,7 +20,7 @@ if (!function_exists('getallheaders')) {
         foreach ($_SERVER as $key => $value) {
             if (substr($key, 0, 5) === 'HTTP_') {
                 $key = substr($key, 5);
-                if (!isset($copy_server[$key])) {
+                if (!isset($copy_server[$key]) || !isset($_SERVER[$key])) {
                     $key = str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', $key))));
                     $headers[$key] = $value;
                 }
