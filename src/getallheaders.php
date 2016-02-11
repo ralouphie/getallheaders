@@ -10,16 +10,36 @@ if (!function_exists('getallheaders')) {
     function getallheaders()
     {
         $headers = array();
+
+        $copy_server = [
+            'CONTENT_TYPE'   => 'Content-Type',
+            'CONTENT_LENGTH' => 'Content-Length',
+            'CONTENT_MD5'    => 'Content-MD5',
+        ];
+
         foreach ($_SERVER as $key => $value) {
-            if (substr($key, 0, 5) == 'HTTP_') {
-                $key = str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', substr($key, 5)))));
-                $headers[$key] = $value;
-            } elseif ($key == "CONTENT_TYPE") {
-                $headers["Content-Type"] = $value;
-            } elseif ($key == "CONTENT_LENGTH") {
-                $headers["Content-Length"] = $value;
+            if (substr($key, 0, 5) === 'HTTP_') {
+                $key = substr($key, 5);
+                if (!isset($copy_server[$key])) {
+                    $key = str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', $key))));
+                    $headers[$key] = $value;
+                }
+            } elseif (isset($copy_server[$key])) {
+                $headers[$copy_server[$key]] = $value;
             }
         }
+
+        if (!isset($headers['Authorization'])) {
+            if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
+                $headers['Authorization'] = $_SERVER['REDIRECT_HTTP_AUTHORIZATION'];
+            } elseif (isset($_SERVER['PHP_AUTH_USER'])) {
+                $basic_pass = isset($_SERVER['PHP_AUTH_PW']) ? $_SERVER['PHP_AUTH_PW'] : '';
+                $headers['Authorization'] = 'Basic ' . base64_encode($_SERVER['PHP_AUTH_USER'] . ':' . $basic_pass);
+            } elseif (isset($_SERVER['PHP_AUTH_DIGEST'])) {
+                $headers['Authorization'] = $_SERVER['PHP_AUTH_DIGEST'];
+            }
+        }
+
         return $headers;
     }
 
