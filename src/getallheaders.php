@@ -28,6 +28,19 @@ if (!function_exists('getallheaders')) {
                 $headers[$copy_server[$key]] = $value;
             }
         }
+		foreach ( array (
+				'Content-Length',
+				'Content-Type' 
+		) as $special ) {
+			// there's a weird bug where these might exist in $_SERVER regardless of wether the client sent these headers or not.
+			// when they were not sent, they contain emptystring. when they do contain emptystring,
+			// i prefer to assume that they weren't sent, rather than they were actually sent with emptystring
+			// (i think no SANE http client sends them with emptystring anyway. a SANE client will send content-length: 0 - not content-length: emptystring)
+			// ( and afaik its impossible at this point to figure out which is the case)
+			if (array_key_exists ( $special, $headers ) && empty ( $headers [$special] ) && $headers [$special] !== '0') {
+				unset ( $headers [$special] );
+			}
+		}
 
         if (!isset($headers['Authorization'])) {
             if (isset($_SERVER['REDIRECT_HTTP_AUTHORIZATION'])) {
