@@ -2,10 +2,9 @@
 	bootstrap="vendor/autoload.php"
 	convertErrorsToExceptions="true"
 	convertNoticesToExceptions="true"
-	convertWarningsToExceptions="true"
-	strict="true">
+	convertWarningsToExceptions="true">
 
-	<testsuite>
+	<testsuite name="getallheaders">
 		<directory>./tests</directory>
 	</testsuite>
 

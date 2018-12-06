@@ -1,10 +1,10 @@
 <?php
 
-class GetAllHeadersTest extends \PHPUnit_Framework_TestCase
+class GetAllHeadersTest extends \PHPUnit\Framework\TestCase
 {
 
     /**
-     * @dataProvider testWorksData
+     * @dataProvider dataWorks
      */
     public function testWorks($test_type, $expected, $server)
     {
@@ -13,9 +13,13 @@ class GetAllHeadersTest extends \PHPUnit_Framework_TestCase
         }
         $result = getallheaders();
         $this->assertEquals($expected, $result, "Error testing $test_type works.");
+        // Clean up.
+        foreach ($server as $key => $val) {
+            unset($_SERVER[$key]);
+        }
     }
 
-    public function testWorksData()
+    public function dataWorks()
     {
         return array(
             array(
