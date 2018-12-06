@@ -12,7 +12,7 @@
 		"php": ">=5.3"
 	},
 	"require-dev": {
-		"phpunit/phpunit": "^6",
+		"phpunit/phpunit": "^5",
 		"satooshi/php-coveralls": ">=1.0"
 	},
 	"autoload": {
