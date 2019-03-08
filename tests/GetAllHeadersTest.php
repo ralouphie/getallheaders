@@ -1,8 +1,11 @@
 <?php
 
-class GetAllHeadersTest extends \PHPUnit\Framework\TestCase
-{
+namespace getallheaders\Tests;
 
+use PHPUnit\Framework\TestCase;
+
+class GetAllHeadersTest extends TestCase
+{
     /**
      * @dataProvider dataWorks
      */
@@ -21,105 +24,105 @@ class GetAllHeadersTest extends \PHPUnit\Framework\TestCase
 
     public function dataWorks()
     {
-        return array(
-            array(
+        return [
+            [
                 'normal case',
-                array(
+                [
                     'Key-One'                 => 'foo',
                     'Key-Two'                 => 'bar',
-                    'Another-Key-For-Testing' => 'baz'
-                ),
-                array(
+                    'Another-Key-For-Testing' => 'baz',
+                ],
+                [
                     'HTTP_KEY_ONE'                 => 'foo',
                     'HTTP_KEY_TWO'                 => 'bar',
-                    'HTTP_ANOTHER_KEY_FOR_TESTING' => 'baz'
-                )
-            ),
-            array(
+                    'HTTP_ANOTHER_KEY_FOR_TESTING' => 'baz',
+                ],
+            ],
+            [
                 'Content-Type',
-                array(
-                    'Content-Type' => 'two'
-                ),
-                array(
+                [
+                    'Content-Type' => 'two',
+                ],
+                [
                     'HTTP_CONTENT_TYPE' => 'one',
-                    'CONTENT_TYPE'      => 'two'
-                )
-            ),
-            array(
+                    'CONTENT_TYPE'      => 'two',
+                ],
+            ],
+            [
                 'Content-Length',
-                array(
-                    'Content-Length' => '222'
-                ),
-                array(
+                [
+                    'Content-Length' => '222',
+                ],
+                [
                     'CONTENT_LENGTH'      => '222',
-                    'HTTP_CONTENT_LENGTH' => '111'
-                )
-            ),
-            array(
+                    'HTTP_CONTENT_LENGTH' => '111',
+                ],
+            ],
+            [
                 'Content-Length (HTTP_CONTENT_LENGTH only)',
-                array(
-                    'Content-Length' => '111'
-                ),
-                array(
-                    'HTTP_CONTENT_LENGTH' => '111'
-                )
-            ),
-            array(
+                [
+                    'Content-Length' => '111',
+                ],
+                [
+                    'HTTP_CONTENT_LENGTH' => '111',
+                ],
+            ],
+            [
                 'Content-MD5',
-                array(
-                    'Content-Md5' => 'aef123'
-                ),
-                array(
+                [
+                    'Content-Md5' => 'aef123',
+                ],
+                [
                     'CONTENT_MD5'      => 'aef123',
-                    'HTTP_CONTENT_MD5' => 'fea321'
-                )
-            ),
-            array(
+                    'HTTP_CONTENT_MD5' => 'fea321',
+                ],
+            ],
+            [
                 'Content-MD5 (HTTP_CONTENT_MD5 only)',
-                array(
-                    'Content-Md5' => 'f123'
-                ),
-                array(
-                    'HTTP_CONTENT_MD5' => 'f123'
-                )
-            ),
-            array(
+                [
+                    'Content-Md5' => 'f123',
+                ],
+                [
+                    'HTTP_CONTENT_MD5' => 'f123',
+                ],
+            ],
+            [
                 'Authorization (normal)',
-                array(
-                    'Authorization' => 'testing'
-                ),
-                array(
+                [
+                    'Authorization' => 'testing',
+                ],
+                [
                     'HTTP_AUTHORIZATION' => 'testing',
-                )
-            ),
-            array(
+                ],
+            ],
+            [
                 'Authorization (redirect)',
-                array(
-                    'Authorization' => 'testing redirect'
-                ),
-                array(
+                [
+                    'Authorization' => 'testing redirect',
+                ],
+                [
                     'REDIRECT_HTTP_AUTHORIZATION' => 'testing redirect',
-                )
-            ),
-            array(
+                ],
+            ],
+            [
                 'Authorization (PHP_AUTH_USER + PHP_AUTH_PW)',
-                array(
-                    'Authorization' => 'Basic ' . base64_encode('foo:bar')
-                ),
-                array(
+                [
+                    'Authorization' => 'Basic ' . base64_encode('foo:bar'),
+                ],
+                [
                     'PHP_AUTH_USER' => 'foo',
-                    'PHP_AUTH_PW'   => 'bar'
-                )
-            ),
-            array(
+                    'PHP_AUTH_PW'   => 'bar',
+                ],
+            ],
+            [
                 'Authorization (PHP_AUTH_DIGEST)',
-                array(
-                    'Authorization' => 'example-digest'
-                ),
-                array(
-                    'PHP_AUTH_DIGEST' => 'example-digest'
-                )
-            )
-        );
+                [
+                    'Authorization' => 'example-digest',
+                ],
+                [
+                    'PHP_AUTH_DIGEST' => 'example-digest',
+                ],
+            ],
+        ];
     }
 }
