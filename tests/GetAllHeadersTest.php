@@ -70,7 +70,7 @@ class GetAllHeadersTest extends TestCase
             [
                 'Content-MD5',
                 [
-                    'Content-Md5' => 'aef123',
+                    'Content-MD5' => 'aef123',
                 ],
                 [
                     'CONTENT_MD5'      => 'aef123',
@@ -80,7 +80,7 @@ class GetAllHeadersTest extends TestCase
             [
                 'Content-MD5 (HTTP_CONTENT_MD5 only)',
                 [
-                    'Content-Md5' => 'f123',
+                    'Content-MD5' => 'f123',
                 ],
                 [
                     'HTTP_CONTENT_MD5' => 'f123',
