@@ -14,14 +14,22 @@ if (!function_exists('getallheaders')) {
         $copy_server = array(
             'CONTENT_TYPE'   => 'Content-Type',
             'CONTENT_LENGTH' => 'Content-Length',
-            'CONTENT_MD5'    => 'Content-Md5',
+            'CONTENT_MD5'    => 'Content-MD5',
         );
 
         foreach ($_SERVER as $key => $value) {
             if (substr($key, 0, 5) === 'HTTP_') {
                 $key = substr($key, 5);
                 if (!isset($copy_server[$key]) || !isset($_SERVER[$key])) {
-                    $key = str_replace(' ', '-', ucwords(strtolower(str_replace('_', ' ', $key))));
+                    $keys = explode('_', $key);
+                    if (count($keys) === 2 && strtolower($keys[1]) === 'md5') {
+                        $keys[0] = ucwords(strtolower($keys[0]));
+                        $keys[1] = strtoupper($keys[1]);
+                        $key = implode(' ', $keys);
+                    } else {
+                        $key = ucwords(strtolower(str_replace('_', ' ', $key)));
+                    }
+                    $key = str_replace(' ', '-', $key);
                     $headers[$key] = $value;
                 }
             } elseif (isset($copy_server[$key])) {
