@@ -1,14 +1,22 @@
 language: php
 
-php:
-  - 5.6
-  - 7.0
-  - 7.1
-  - 7.2
-  - 7.3
+matrix:
+  include:
+    - php: 5.6
+      dist: xenial
+    - php: 7.0
+      dist: xenial
+    - php: 7.1
+      dist: bionic
+    - php: 7.2
+      dist: bionic
+    - php: 7.3
+      dist: bionic
+    - php: 7.4
+      dist: bionic
 
 before_script:
-  - composer install
+  - travis_retry composer install
 
 script:
   - mkdir -p build/logs
